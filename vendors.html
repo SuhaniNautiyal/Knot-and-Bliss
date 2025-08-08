@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vendor Manager</title>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <a href="index.html" class="back-btn">←</a>
+            <h1>Vendor Manager</h1>
+        </header>
+        <div class="form-container">
+            <input type="text" id="vendorName" placeholder="Vendor Name">
+            <input type="text" id="vendorPhone" placeholder="Contact Number">
+            <input type="email" id="vendorEmail" placeholder="Email">
+            <textarea id="vendorNotes" placeholder="Notes (optional)"></textarea>
+            <select id="vendorCategory">
+                <option value="Venue">Venue</option>
+                <option value="Caterer">Caterer</option>
+                <option value="Decorator">Decorator</option>
+                <option value="DJ">DJ</option>
+                <option value="Photography">Photography</option>
+                <option value="Other">Other</option>
+            </select>
+            <button onclick="addVendor()">Add Vendor</button>
+        </div>
+        <div class="guest-list" id="vendorList"></div>
+        <script src="script.js"></script>
+    </body>
+
+</html>

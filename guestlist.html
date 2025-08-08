@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Guest List Manager</title>
+        <script type ="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+            import {getFirestore} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+            const firebaseConfig = {
+                apiKey: "AIzaSyAitvnUpyWyCnFwbOP5ySyaBLq94QAXc1w",
+                authDomain: "knotandbliss.firebaseapp.com",
+                projectId: "knotandbliss",
+                storageBucket: "knotandbliss.appspot.com",
+                messagingSenderId: "104758647141",
+                appId: "1:104758647141:web:d9eaf309e164548b40e98c"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            window.db = db;
+        </script>
+
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Guest List Manager</h1>
+            <a href="index.html" class="back-btn">⬅</a>
+        </header>
+            <div class="form-container">
+                <input type="text" id="guestName" placeholder="Guest Name">
+                <input type="text" id="guestPhone" placeholder="Phone Number">
+                <select id="guestRSVP">
+                    <option value="Pending">Pending</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="Declined">Declined</option>
+                </select>
+                <button onClick="addGuest()">Add Guest</button>
+            </div>
+
+            <div class="guest-list" id="guestList"></div>
+        <script src="script.js" type="module"></script>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+/*FOR GUEST LIST*/
+body {
+    background-color: #fff0f5;
+    font-family: 'Nunito', sans-serif;
+}
+
+.form-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.form-container input, .form-container select{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.form-container button{
+    padding: 10px 20px;
+    background: #ffb4a2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.form-container button:hover {
+    background: #e5989b;
+}
+
+.guest-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.guest-card {
+    background: #f8f1f4;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.guest-card h3{
+    margin: 0;
+    color: #6d6875;
+}
+
+.guest-card p{
+    margin: 8px 0;
+}
+
+.guest-card button{
+    background: #ffb4a2;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-right: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.guest-card button:hover {
+    background: #e5989b;
+}
+
+.back-btn {
+    position: absolute;
+    left: 20px;
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+    background-color: #ffb4a2;
+    padding: 6px 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.back-btn:hover {
+    background-color: #e5989b;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 36px;
+    color: #f35c96;
+    background-color: #f8f1f4;
+    padding: 15px 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin: 0;
+}

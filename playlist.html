@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Music Playlist Manager</title>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <a href="index.html" class="back-btn">←</a>
+            <h1>Music Playlist Manager</h1>
+        </header>
+        <div class="form-container">
+            <input type="text" id="songName" placeholder="Song Name">
+            <input type="text" id="artistName" placeholder="Artist Name">
+            <select id="songCategory">
+                <option value="Mehendi">Mehendi</option>
+                <option value="Sangeet">Sangeet</option>
+                <option value="Reception">Reception</option>
+                <option value="Cocktail">Cocktail</option>
+                <option value="Other">Other</option>
+            </select>
+            <button onclick="addSong()">Add Song</button>
+        </div>
+        <div class="guest-list" id="playlist"></div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
