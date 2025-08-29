@@ -20,7 +20,7 @@ Inspired by **Notion** (clean layouts) and **Pinterest** (aesthetic visuals), th
 - **Backend:** Java (Spring Boot / JSP)  
 - **Database:** MySQL / SQL  
 - **Authentication:** Firebase  
-- **Hosting:** GitHub Pages / Netlify (frontend), Render/Heroku (backend)  
+- **Hosting:** GitHub Pages  
 
 ---
 
