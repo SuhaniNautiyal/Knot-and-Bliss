@@ -1,257 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Knot & Bliss - Wedding Planning Made Easy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+/*FOR GUEST LIST*/
+body {
+    background-color: #fff0f5;
+    font-family: 'Nunito', sans-serif;
+}
 
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+.form-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAitvnUpyWyCnFwbOP5ySyaBLq94QAXc1w",
-      authDomain: "knotandbliss.firebaseapp.com",
-      databaseURL: "https://knotandbliss-default-rtdb.asia-southeast1.firebasedatabase.app/",
-      projectId: "knotandbliss",
-      storageBucket: "knotandbliss.appspot.com",
-      messagingSenderId: "104758647141",
-      appId: "1:104758647141:web:d9eaf309e164548b40e98c"
-    };
-    firebase.initializeApp(firebaseConfig);
+.form-container input, .form-container select{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
 
-    const auth = firebase.auth();
-    const db = firebase.database();
+.form-container button{
+    padding: 10px 20px;
+    background: #ffb4a2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.form-container button:hover {
+    background: #e5989b;
+}
 
-    window.onload = function () {
-      const loginBtn = document.getElementById("login-btn");
-      const logoutBtn = document.getElementById("logout-btn");
-      const userInfo = document.getElementById("user-info");
+.guest-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
 
-      loginBtn.onclick = () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        auth.signInWithPopup(provider);
-      };
+.guest-card {
+    background: #f8f1f4;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
-      logoutBtn.addEventListener("click", () => {
-        auth.signOut().then(() => {
-          console.log("User signed out.");
-          window.location.href = "index.html";
-        }).catch((error) => {
-          console.error("Logout error:", error);
-        });
-      });
+.guest-card h3{
+    margin: 0;
+    color: #6d6875;
+}
 
-      auth.onAuthStateChanged(user => {
-        if (user) {
-          userInfo.textContent = `Welcome`;
-          loginBtn.style.display = "none";
-          logoutBtn.style.display = "inline-block";
-          loadCounts(user.uid);
-        } else {
-          userInfo.textContent = "";
-          loginBtn.style.display = "inline-block";
-          logoutBtn.style.display = "none";
-        }
-      });
-    };
+.guest-card p{
+    margin: 8px 0;
+}
 
-    function loadCounts(uid) {
-      db.ref(`users/${uid}/guests`).once("value", snap => {
-        document.getElementById("guest-count").textContent = `${snap.numChildren()}`;
-      });
-      db.ref(`users/${uid}/budget`).once("value", snap => {
-        let total = 0;
-        snap.forEach(item => total += Number(item.val().amount || 0));
-        document.getElementById("budget-total").textContent = `₹${total}`;
-      });
-      db.ref(`users/${uid}/playlist`).once("value", snap => {
-        document.getElementById("playlist-count").textContent = `Songs: ${snap.numChildren()}`;
-      });
-      db.ref(`users/${uid}/vendors`).once("value", snap => {
-        document.getElementById("vendor-count").textContent = `Vendors: ${snap.numChildren()}`;
-      });
-      db.ref(`users/${uid}/notes`).once("value", snap => {
-        document.getElementById("note-count").textContent = `Notes: ${snap.numChildren()}`;
-      });
-      db.ref(`users/${uid}/rituals`).once("value", snap => {
-        document.getElementById("ritual-count").textContent = `Items: ${snap.numChildren()}`;
-      });
-    }
-  </script>
+.guest-card button{
+    background: #ffb4a2;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-right: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Nunito', sans-serif;
-      text-align: center;
-      color: #333;
-    }
+.guest-card button:hover {
+    background: #e5989b;
+}
 
-    /* background slideshow */
-    .background-slideshow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      background-size: cover;
-      background-position: center;
-      animation: slideshow 24s infinite;
-    }
+.back-btn {
+    position: absolute;
+    left: 20px;
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+    background-color: #ffb4a2;
+    padding: 6px 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-    /* semi-transparent white overlay */
-    .background-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255,255,255,0.75);
-      z-index: -1;
-    }
+.back-btn:hover {
+    background-color: #e5989b;
+}
 
-   
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 30px;
+}
 
-    h1 {
-      color: #ff69b4;
-      font-size: 42px;
-      margin: 10px 0;
-    }
+header h1 {
+    font-size: 36px;
+    color: #f35c96;
+    background-color: #f8f1f4;
+    padding: 15px 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin: 0;
+}
 
-    p {
-      color: #7d7d7d;
-      margin-bottom: 20px;
-      font-size: 18px;
-    }
-
-    #auth-section {
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-
-    #login-btn{ 
-      background-color: #6d6875;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      color: white;
-      font-family: inherit;
-      cursor: pointer;
-      margin: 0 8px;
-    }
-
-    #logout-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 8px 16px;
-      background-color: #b08ead; 
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    #logout-btn:hover {
-      background-color: #9a7599; 
-    }
-
-    .summary {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 40px;
-      font-weight: bold;
-    }
-
-    .dashboard {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      max-width: 900px;
-      margin: 0 auto 50px;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: #f8f1f4;
-      padding: 30px 20px;
-      border-radius: 18px;
-      text-decoration: none;
-      color: #6d6875;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      transition: all 0.25s ease-in-out;
-      position: relative;
-    }
-
-    .card:hover{
-      background: #ffcad4;
-      transform: translateY(-5px);
-      color: white;
-    }
-
-    .card h2 {
-      margin: 0;
-      font-size: 22px;
-    }
-
-    .count {
-      font-size: 14px;
-      margin-top: 8px;
-      color: #999;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- background containers -->
-  <div class="background-slideshow"></div>
-
-
-  <div id="auth-section">
-    <span id="user-info" style="font-weight: bold;"></span>
-    <button id="login-btn">Login</button>
-    <button id="logout-btn" style="display:none;">Logout</button>
-  </div>
-
-  <h1>Knot & Bliss</h1>
-  <p>Your one-stop wedding planning manager ✨</p>
-
-  <div class="summary">
-    <div>👥 Guests: <span id="guest-count">-</span></div>
-    <div>💸 Budget Used: <span id="budget-total">₹0.00</span></div>
-  </div>
-
-  <div class="dashboard">
-    <a href="guestlist.html" class="card">
-      <h2>👥 Guest List Manager</h2>
-      <div class="count" id="guest-count">Guests: -</div>
-    </a>
-    <a href="budget.html" class="card">
-      <h2>💸 Budget Planner</h2>
-      <div class="count" id="budget-total">Total: -</div>
-    </a>
-    <a href="playlist.html" class="card">
-      <h2>🎶 Music Playlist</h2>
-      <div class="count" id="playlist-count">Songs: -</div>
-    </a>
-    <a href="vendors.html" class="card">
-      <h2>📞 Vendor Manager</h2>
-      <div class="count" id="vendor-count">Vendors: -</div>
-    </a>
-    <a href="notes.html" class="card">
-      <h2>📝 Notes Manager</h2>
-      <div class="count" id="note-count">Notes: -</div>
-    </a>
-    <a href="rituals.html" class="card">
-      <h2>🕯️ Rituals Checklist</h2>
-      <div class="count" id="ritual-count">Items: -</div>
-    </a>
-  </div>
-</body>
-</html>
