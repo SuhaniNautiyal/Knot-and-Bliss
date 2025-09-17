@@ -99,27 +99,3 @@ header h1 {
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     margin: 0;
 }
-
-/* === Slideshow Background === */
-.background-slideshow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  background-size: cover;
-  background-position: center;
-  animation: slideshow 24s infinite;
-
-  box-shadow: inset 0 0 0 1000px rgba(235,255,255,0.6);
-}
-
-
-
- @keyframes slideshow {
-        0%   { background-image: url('https://static.vecteezy.com/system/resources/thumbnails/050/494/463/small/indian-weddinggraphy-in-bangalore-free-photo.jpg'); }
-        33%  { background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqnM2MkViR1dAR2gFgHVWnZ7LjKAr6GUD0sQ&s'); }
-        66%  { background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPEm6r5TZH7nrtZZp-gGredMwJaxmSMBUSlQ&s'); }
-        100% { background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDHlu6Q8-q1gQ_BN70A7L2jLs_iA6VFavE2g&s'); }
-}
