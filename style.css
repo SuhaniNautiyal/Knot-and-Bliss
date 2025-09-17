@@ -111,19 +111,11 @@ header h1 {
   background-size: cover;
   background-position: center;
   animation: slideshow 24s infinite;
+
+  box-shadow: inset 0 0 0 1000px rgba(235,255,255,0.6);
 }
 
-/* semi-transparent white overlay */
-.background-slideshow::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255,255,255,0.6); /* adjust opacity here */
-  z-index: 1;
-}
+
 
  @keyframes slideshow {
         0%   { background-image: url('https://static.vecteezy.com/system/resources/thumbnails/050/494/463/small/indian-weddinggraphy-in-bangalore-free-photo.jpg'); }
